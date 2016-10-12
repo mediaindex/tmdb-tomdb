@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="/css/application.css">
+<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<link rel="stylesheet" type="text/css" href="../css/15022.css" />
+<title><%= @page_title %></title>
+</head>
+<body>
+    <div id="wrapper">
+
+        <div id="headerwrap">
+            <div id="header">
+             <h1><a href="/"><%= @app_name %></a></h1>
+             <div class="app-name yellow-black">D</div>
+             <div class="app-name red-white">A</div>
+             <div class="app-name yellow-black">T</div>
+             <div class="app-name red-white">A</div>
+             <div class="app-name yellow-black">B</div>
+             <div class="app-name red-white">A</div>
+             <div class="app-name yellow-black">S</div>
+             <div class="app-name red-white">E</div>
+            </div>
+        </div>
+
+        <div id="navigationwrap">
+        <div id="navigation">
+        <section>
+              <h3>Search with name ?</h3>
+                    <%= erb :search_form %>
+                    </section>
+        </div>
+        </div>
+
+        <div id="contentliquid">
+        <div id="contentwrap">
+        <div id="content">
+           <%= yield %>
+        </div>
+        </div>
+        </div>
+
+        <div id="footerwrap">
+        <div id="footer">
+          Copyright &copy; <%= Date.today %> <%= @app_name %>
+          <div class="make_with_love">Make with <span class="heart"></span> in Algeria</div>
+        </div>
+        </div>
+
+    </div>
+</body>
+</html>

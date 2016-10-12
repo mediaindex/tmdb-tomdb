@@ -1,0 +1,6 @@
+
+<h2>
+    Search results <%= @results.count%>
+  for <q><%= @query %></q>
+</h2>
+<%= erb :results unless @results.empty? %>

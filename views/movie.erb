@@ -1,0 +1,121 @@
+
+<h2>
+  <%= @results["title"] %>
+</h2>
+
+<% unless @results["overview"].nil? || @results["overview"] == "" %>
+  <blockquote>
+    <%= @results["overview"] %>
+  </blockquote>
+<% end %>
+<div id="image">
+
+  <% if @results["poster_path"].nil? || @results["poster_path"] == "" %>
+    <img src="/images/default-poster.jpg" alt="No poster found" title="No poster found" id="poster">
+  <% else %>
+    <img src="https://image.tmdb.org/t/p/w300<%= @results["poster_path"] %>" alt="Movie poster for <%= @results["title"] %>" title="Movie poster for <%= @results["title"] %>" id="poster">
+  <% end %>
+
+
+    <% unless @results["vote_average"].nil? || @results["vote_average"] == "" %>
+      <dd>
+        <%= '<img src="/images/star.png" class="emoji" alt="⭐" title="Vote average">' * @results["vote_average"].to_f.round %>
+      </dd>
+    <% end %>
+
+    <% unless @results["vote_count"].nil? || @results["vote_count"] == "" %>
+      <dt>
+        Rating
+      </dt>
+      <dd>
+        <%= @results["vote_count"] %>
+      </dd>
+    <% end %>
+</div>
+
+<div id="caption">
+<div id="box">
+  <dl>
+
+    <dt>
+      Released
+    </dt>
+    <% unless @results["release_date"].nil? || @results["release_date"] == "" %>
+      <dd>
+        <%= Time.parse(@results["release_date"]).strftime("%A, %B %e, %Y") %>
+      </dd>
+    <% end %>
+
+
+    <% unless @results["runtime"].nil? || @results["runtime"] == "" %>
+      <dt>
+        Runtime
+      </dt>
+      <dd>
+        <%= @results["runtime"] %> min
+      </dd>
+    <% end %>
+
+       <% unless @genres.empty? || @genres == "" %>
+          <dt>
+            <%= "Genre:" if @genres.size == 1 %>
+            <%= "Genres:" if @genres.size > 1 %>
+          </dt>
+          <dd>
+            <ul>
+              <% @genres.each do |genre| %>
+                <li><%= genre["name"] %></li> 
+              <% end %>
+            </ul>
+            </dd>
+        <% end %>
+
+       <% unless @languages.empty? || @languages == "" %>
+          <dt>
+            <%= "Disponible language" if @languages.size == 1 %>
+            <%= "Disponible languages" if @languages.size > 1 %>
+          </dt>
+          <dd>
+            <ul>
+              <% @languages.each do |language| %>
+                <li><%= language["name"] %></li> 
+              <% end %>
+            </ul>
+            </dd>
+        <% end %>
+
+
+
+    <% unless @companies.empty? || @companies.first == "" %>
+      <dt>
+        <%= "Company" if @companies.size == 1 %>
+        <%= "Companies" if @companies.size > 1 %>
+      </dt>
+      <dd>
+          <% @companies.each do |companie| %>
+            <li href="#"><%= companie["name"] %></li>
+          <% end %>
+      </dd>
+    <% end %>
+
+  
+
+  <% unless @results["imdb_id"].nil? || @results["imdb_id"] == "" %>
+    <dt>
+      See on Imdb
+    </dt>
+    <dd>
+      <a href="http://www.imdb.com/title/<%= @results["imdb_id"] %>">IMDB PAGE</a>
+    </dd>
+    <% else %>
+    <dt>
+      See on Imdb
+    </dt>
+    <dd>
+      N/A
+    </dd>
+
+  <% end %>
+
+</div>
+</div>

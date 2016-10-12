@@ -1,0 +1,199 @@
+<h2>
+  Series : <%= @results["name"] %>
+</h2>
+
+<% unless @results["overview"].nil? || @results["overview"] == "N/A" %>
+  <blockquote>
+    <%= @results["overview"] %>
+  </blockquote>
+<% end %>
+
+<div id="image">
+
+  <% if @results["poster_path"].nil? || @results["poster_path"] == "N/A" %>
+    <img src="/images/default-poster.jpg" alt="No poster found" title="No poster found" id="poster">
+  <% else %>
+    <img src="https://image.tmdb.org/t/p/w300<%= @results["poster_path"] %>" alt="Movie poster for <%= @results["name"] %>" title="Movie poster for <%= @results["name"] %>" id="poster">
+  <% end %>
+
+
+</div>
+
+
+<div id="caption">
+	<div id="box">
+		<dl>
+
+		   <% unless @genres.empty? || @genres == "" %>
+		      <dt>
+		        <%= "Genre:" if @genres.size == 1 %>
+		        <%= "Genres:" if @genres.size > 1 %>
+		      </dt>
+		      <dd>
+		        <ul>
+		          <% @genres.each do |genre| %>
+		            <li><%= genre["name"] %></li> 
+		          <% end %>
+		        </ul>
+		        </dd>
+		    <% end %>
+
+		    <% unless @creators.empty? || @creators == ""  %>
+		      <dt>
+		        Created by:
+		      </dt>
+		      <dd>
+		        <ul>
+		          <% @creators.each do |creator| %>
+		            <li><%= creator["name"] %></li> 
+		          <% end %>
+		        </ul>
+		        </dd>
+		    <% end %>
+
+		    <% unless @results["episode_run_time"].nil? || @results["episode_run_time"] == "" %>
+		      <dt>
+		        Run time:
+		      </dt>
+		      <dd>
+		        <%= @results["episode_run_time"] %>
+		      </dd>
+		    <% end %>
+
+		    <% unless @results["first_air_date"].nil? || @results["first_air_date"] == "" %>
+		    <dt>
+		      Released
+		    </dt>
+		      <dd>
+		        <%= Time.parse(@results["first_air_date"]).strftime("%A, %B %e, %Y") %>
+		      </dd>
+		    <% end %>
+
+		    <% unless @results["last_air_date"].nil? || @results["last_air_date"] == "" %>
+		    <dt>
+		      Last diffusion
+		    </dt>
+		      <dd>
+		        <%= Time.parse(@results["last_air_date"]).strftime("%A, %B %e, %Y") %>
+		      </dd>
+		    <% end %>
+
+		    <% unless @results["homepage"].nil? || @results["homepage"] == "" %>
+		    <dt>
+		      Official serie page
+		    </dt>
+		      <dd>
+		        <a href="<%= @results["homepage"] %>">Official page for <%= @results["name"] %></a>
+		      </dd>
+		    <% end %>
+
+		    <% unless @results["in_production"] == true %>
+		    <dt>
+		      Serie is
+		    </dt>
+		      <dd>
+		        Complited
+		      </dd>
+		      <% else %>
+		      <dt>
+		      Serie is
+		    </dt>
+		      <dd>
+		        On production
+		      </dd>
+		    <% end %>
+
+		    <% unless @networks.empty? || @networks == ""  %>
+		      <dt>
+		        Diffused on
+		      </dt>
+		      <dd>
+		        <ul>
+		          <% @networks.each do |network| %>
+		            <li><%= network["name"] %></li> 
+		          <% end %>
+		        </ul>
+		        </dd>
+		    <% end %>
+
+		    <% unless @results["number_of_episodes"].nil? || @results["number_of_episodes"] == ""  %>
+		      <dt>
+		        Total No episodes
+		      </dt>
+		      <dd>
+		        <ul>
+		            <li><%= @results["number_of_episodes"] %></li> 
+		        </ul>
+		        </dd>
+		    <% end %>
+
+		    <% unless @results["number_of_seasons"].nil? || @results["number_of_seasons"] == ""  %>
+		      <dt>
+		        Total No Seasons
+		      </dt>
+		      <dd>
+		        <ul>
+		            <li><%= @results["number_of_seasons"] %></li> 
+		        </ul>
+		        </dd>
+		    <% end %>
+
+		    <% unless @results["original_name"].nil? || @results["original_name"] == ""  %>
+		      <dt>
+		        Original title
+		      </dt>
+		      <dd>
+		        <ul>
+		            <li><%= @results["original_name"] %></li> 
+		        </ul>
+		        </dd>
+		    <% end %>
+
+		    <% unless @results["original_language"].nil? || @results["original_language"] == ""  %>
+		      <dt>
+		        Original language
+		      </dt>
+		      <dd>
+		        <ul>
+		            <li><%= @results["original_language"].capitalize %></li> 
+		        </ul>
+		        </dd>
+		    <% end %>
+		    <% unless @results["popularity"].nil? || @results["popularity"] == ""  %>
+		      <dt>
+		        Popularity
+		      </dt>
+		      <dd>
+		        <ul>
+		            <li><%= @results["popularity"] %></li> 
+		        </ul>
+		        </dd>
+		    <% end %>
+		    
+		    <% unless @results["vote_count"].nil? || @results["vote_count"] == ""  %>
+		      <dt>
+		        Vote count
+		      </dt>
+		      <dd>
+		        <ul>
+		            <li><%= @results["vote_count"] %></li> 
+		        </ul>
+		        </dd>
+		    <% end %>
+
+		    <% unless @results["vote_average"].nil? || @results["vote_average"] == ""  %>
+		      <dt>
+		        Vote Average
+		      </dt>
+		      <dd>
+		        <ul>
+		            <li><%= @results["vote_average"] %></li> 
+		        </ul>
+		        </dd>
+		    <% end %>
+
+
+		</dl>
+	</div>
+</div>
+ 

@@ -1,0 +1,58 @@
+
+<ol id="related">
+<!-- Movie query-->
+<h3>Search Results for Movies</h3>
+
+  <% @results.each do |result| %>
+
+<% if result["media_type"] == "movie" %>
+
+
+    <li>
+      <a href="/movie?id=<%= result["id"] %>"><%= result["title"] %></a>
+      (=> Movies)
+    </li>
+
+
+<% end %>
+  <% end %>
+<!-- Serie query-->
+
+<h3>Search Results for Series</h3>
+  <% @results.each do |result| %>
+
+<% if result["media_type"] == "tv" %>
+
+
+    <li>
+      <a href="/serie?id=<%= result["id"] %>"><%= result["name"] %></a>
+      (=> Series)
+    </li>
+
+
+<% end %>
+  <% end %>
+  
+<!-- Person query-->
+
+<h3>Search Results for Persons</h3>
+
+  <% @results.each do |result| %>
+<% if result["media_type"] == "person" %>
+
+
+    <li>
+      <a href="https://www.themoviedb.org/person/<%= result["id"] %>"><%= result["name"] %></a>
+      (=> Person)
+    </li>
+
+
+<% end %>
+
+  <% end %>
+
+</ol>
+
+
+
+
