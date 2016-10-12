@@ -21,7 +21,7 @@ get '/search' do
   @query = params[:q]
   @page_title += ": Search Results for #{@query}"
   @button = params[:button]
-      uri = URI.parse("http://api.themoviedb.org/3/search/multi?api_key=#{@api_key}&language=fr-FR&query=#{URI.escape(@query)}")
+      uri = URI.parse("http://api.themoviedb.org/3/search/multi?api_key=#{@api_key}&query=#{URI.escape(@query)}")
       http = Net::HTTP.new(uri.host, uri.port)
       request = Net::HTTP::Get.new(uri.request_uri)
       response = http.request(request)
